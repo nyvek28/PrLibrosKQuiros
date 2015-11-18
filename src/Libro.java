@@ -12,7 +12,7 @@ public class Libro {
     static int consecutivo = 0;
 
 
-
+//Prueba
 	public Libro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares){
         
 		setConsecutivo(getConsecutivo() + 1);

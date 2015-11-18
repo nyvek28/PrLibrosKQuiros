@@ -1,5 +1,11 @@
-/Libro.class
-/Gestor.class
+/Autor.class
 /DescriptorAsociado.class
-/MultiLibro.class
+/Ejemplar.class
+/Gestor.class
+/Libro.class
 /MultiDescriptorAsociado.class
+/MultiEjemplar.class
+/MultiLibro.class
+/MultiTransaccion.class
+/Transaccion.class
+/Usuario.class
