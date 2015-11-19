@@ -23,7 +23,31 @@ public class MultiLibro {
 		return libro;
 	}
 	
-	public  Libro buscar(String ptitulo) throws java.sql.SQLException,Exception{
+	public  Libro buscar(String ptitulo, String columna) throws java.sql.SQLException,Exception{
+		
+		Libro libro = null;/*
+		java.sql.ResultSet rs;
+		String sql;
+		sql = "SELECT titulo,volumen,editorial,fecha,listaAutores,listaDescriptores "+
+		"FROM TLibro "+
+		"WHERE" + columna + " LIKE "+ptitulo+"';";
+		rs = Conector.getConector().ejecutarSQL(sql,true);
+		if (rs.next()){
+			libro = new Libro(
+				rs.getString("titulo"),
+				rs.getString("volumen"),
+				rs.getString("editorial"),
+				rs.getDouble("fecha"),
+				rs.getDouble("listaAutores"),
+				rs.getString("listaDescriptores"));
+		} else {
+			throw new Exception (".");
+		}
+		rs.close();*/
+		return libro; 
+	}
+	
+	public  Libro buscar(int codigo) throws java.sql.SQLException,Exception{
 		
 		Libro libro = null;/*
 		java.sql.ResultSet rs;

@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -5,25 +6,27 @@ class Ejemplar {
 
 	Libro libro;
 	Date fechaIngreso;
+	String isbn;
 	int id;
 	int estadoFisico;
 	int condicionActual;
 	ArrayList<Transaccion> transacciones;
 	static int consecutivo = 0;
 	
-	public Ejemplar(Libro libro, Date fechaIngreso, int id, int estadoFisico, int condicionActual, ArrayList<Transaccion> transacciones) {
+	public Ejemplar(Date fechaIngreso, int id, int estadoFisico, int condicionActual, String isbn) throws SQLException, Exception {
 		
-		this.libro = libro;
-		this.fechaIngreso = fechaIngreso;
-		this.id = id;
-		this.estadoFisico = estadoFisico;
-		this.condicionActual = condicionActual;
-		this.setTransacciones(transacciones);
+		this.setIsbn(isbn);
+		this.setLibro((new MultiLibro().buscar(isbn,"Isbn")));
+		this.setFechaIngreso(fechaIngreso);
+		this.setId(id);
+		this.setEstadoFisico(estadoFisico);
+		this.setCondicionActual(condicionActual);
 	}
 	
 	public Ejemplar(Libro libro, int estadoFisico){
 		
 		this.setLibro(libro);
+		this.setIsbn(this.getLibro().getIsbn());
 		this.setEstadoFisico(estadoFisico);
 		this.setFechaIngreso(new Date());
 		this.setId((Ejemplar.getConsecutivo()+1));
@@ -78,6 +81,14 @@ class Ejemplar {
 
 	public void setTransacciones(ArrayList<Transaccion> transacciones) {
 		this.transacciones = transacciones;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String string) {
+		this.isbn = string;
 	}
 	
 	
