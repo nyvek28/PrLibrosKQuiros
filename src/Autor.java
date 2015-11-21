@@ -5,7 +5,7 @@ public class Autor {
 			
 			private String nombre;
 			private String apellido;
-			private String id;
+			private int id;
 			private String email;
 			private String nacionalidad;
 			private String paisOrigen;
