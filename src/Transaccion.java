@@ -1,18 +1,21 @@
  import java.util.Date;
 
 class Transaccion {
-
-	Date fecha;
-	int tipo;
-	int idUsuario;
-	int idEjemplar;
-	String descripcion;
-	Ejemplar ejemplar;
-	Usuario user;
+	
+	private static int consecutivo = 0;
+	private Date fecha;
+	private int id;
+	private int tipo;
+	private int idUsuario;
+	private int idEjemplar;
+	private String descripcion;
+	private Ejemplar ejemplar;
+	private Usuario user;
 	
 	public Transaccion(Date fecha, int tipo, int idUsuario, int idEjemplar, String descripcion, Ejemplar ejemplar,
-			Usuario user) {
-		super();
+			Usuario user, int id) {
+		
+		this.setId(id);
 		this.fecha = fecha;
 		this.tipo = tipo;
 		this.idUsuario = idUsuario;
@@ -24,10 +27,11 @@ class Transaccion {
 
 	public Transaccion (Usuario u, Ejemplar e, int pTipo, String pDesccripcion){
 		
+		this.setId(Transaccion.getConsecutivo()+1);
 		this.setFecha(new Date());
 		this.setTipo(pTipo);
 		this.setDescripcion(pDesccripcion);
-		//this.setIdUsuario(u.getId());
+		this.setIdUsuario(u.getId());
 		this.setIdEjemplar(e.getId());
 		this.setEjemplar(e);
 		this.setUser(u);
@@ -88,6 +92,22 @@ class Transaccion {
 
 	public void setUser(Usuario user) {
 		this.user = user;
+	}
+
+	public static int getConsecutivo() {
+		return consecutivo;
+	}
+
+	public static void setConsecutivo(int consecutivo) {
+		Transaccion.consecutivo = consecutivo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

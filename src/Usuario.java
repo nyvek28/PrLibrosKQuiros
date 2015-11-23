@@ -2,12 +2,12 @@
 public class Usuario {
 	private String nombre;
 	private String apellido;
-	private String id;
+	private int id;
 	private String email;
 	private String direccion;
 	private int telefono;
 	
-	public Usuario(String pnombre, String papellido, String pid, String pemail, String pdireccion, int ptelefono){
+	public Usuario(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
 		setNombre(pnombre);
 		setApellido(papellido);
 		setId(pid);
@@ -21,7 +21,7 @@ public class Usuario {
 	public void setApellido(String papellido){
 		apellido=papellido;
 	}
-	public void setId(String pid){
+	public void setId(int pid){
 		id=pid;
 	}
 	public void setEmail(String pemail){
@@ -39,7 +39,7 @@ public class Usuario {
 	public String getApellido(){
 		return apellido;
 	}
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 	public String getEmail(){

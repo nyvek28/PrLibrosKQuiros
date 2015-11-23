@@ -4,13 +4,13 @@ import java.util.Date;
 
 class Ejemplar {
 
-	Libro libro;
-	Date fechaIngreso;
-	String isbn;
-	int id;
-	int estadoFisico;
-	int condicionActual;
-	ArrayList<Transaccion> transacciones;
+	private Libro libro;
+	private Date fechaIngreso;
+	private String isbn;
+	private int id;
+	private int estadoFisico;
+	private int condicionActual;
+	private ArrayList<Transaccion> transacciones;
 	static int consecutivo = 0;
 	
 	public Ejemplar(Date fechaIngreso, int id, int estadoFisico, int condicionActual, String isbn) throws SQLException, Exception {
