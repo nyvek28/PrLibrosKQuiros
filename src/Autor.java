@@ -12,7 +12,7 @@ public class Autor {
 			public Libro[] listaLibros;
 			private static int contadorLibros=0;
 			
-			public Autor(String pnombre, String papellido, String pid, String pemail, String pnacionalidad, String ppaisOrigen){
+			public Autor(String pnombre, String papellido, int pid, String pemail, String pnacionalidad, String ppaisOrigen){
 				setNombre(pnombre);
 				setApellido(papellido);
 				setId(pid);
@@ -30,7 +30,7 @@ public class Autor {
 			public void setApellido(String papellido){
 				apellido=papellido;
 			}
-			public void setId(String pid){
+			public void setId(int pid){
 				id=pid;
 			}
 			public void setEmail(String pemail){
@@ -48,7 +48,7 @@ public class Autor {
 			public String getApellido(){
 				return apellido;
 			}
-			public String getId(){
+			public int getId(){
 				return id;
 			}
 			public String getEmail(){
