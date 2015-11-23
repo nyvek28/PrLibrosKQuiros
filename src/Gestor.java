@@ -1,3 +1,7 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.TreeMap;
+import java.util.Vector;
 
 public class Gestor {
 	
@@ -8,18 +12,67 @@ public class Gestor {
 	}
 	
 	/*recibe paramentros*/
-	public String consultarCliente(){
+	public Vector<TreeMap<Object, Object>> consultarUsuario(String nombre){
 
-		/*consultar cliente*/
+		Vector<TreeMap<Object, Object>> usuarios = new Vector<TreeMap<Object, Object>>();
+		ResultSet busqueda = (new MultiUsuario()).buscar(nombre);
 		
-		String x = "a";
-		return x;
+		try {
+			while(busqueda.next()){
+				
+				TreeMap<Object, Object> unUsuario = new TreeMap<Object, Object>();
+				
+				unUsuario.put("id", busqueda.getString("Cedula"));
+				unUsuario.put("nombre", busqueda.getString("Nombre"));
+				unUsuario.put("apellido", busqueda.getString("Apellido"));
+				unUsuario.put("email", busqueda.getString("Email"));
+				unUsuario.put("direccion", busqueda.getString("Direccion"));
+				unUsuario.put("telefono", busqueda.getString("Telefono"));
+				
+				usuarios.add(unUsuario);
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("Error en Gestor/consultarUsuario");
+			e.printStackTrace();
+		}
+		
+		return usuarios;
+
+	}
+	
+	public TreeMap<Object,Object> consultarUsuario(int id){
+
+		Usuario user;
+		TreeMap<Object,Object> datos = new TreeMap<Object,Object>();
+		
+		user = (new MultiUsuario()).buscar(id);
+		datos.put("identificacion", user.getId());
+		datos.put("nombre", user.getNombre());
+		datos.put("apellido", user.getApellido());
+		datos.put("telefono", user.getTelefono());
+		datos.put("email", user.getEmail());
+		datos.put("direccion", user.getDireccion());
+		
+		
+		return datos;
 
 	}
 
 	/*recibe paramentros*/
-	public void modificarCliente(){
-
+	public void modificarUsuario(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
+		
+		Usuario user = (new MultiUsuario()).buscar(pid);
+		user.setNombre(pnombre);
+		user.setApellido(papellido);
+		user.setEmail(pemail);
+		user.setDireccion(pdireccion);
+		user.setTelefono(ptelefono);
+		try{
+			(new MultiUsuario()).actualizar(user);
+		}catch(Exception e){
+			System.out.println("Error en Gestor/modificarUsuario/.actuaizar(user)");
+		}
 
 	}
 

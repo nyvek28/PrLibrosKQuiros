@@ -30,7 +30,7 @@ public class Usuario {
 	public	 void setDireccion(String pdireccion){
 		direccion=pdireccion;
 	}
-	private void setTelefono(int ptelefono){
+	public void setTelefono(int ptelefono){
 		telefono=ptelefono;
 	}
 	public String getNombre(){

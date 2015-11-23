@@ -1,4 +1,5 @@
 import java.sql.ResultSet;
+import java.util.Vector;
 
 class MultiPrestamo {
 
@@ -6,7 +7,15 @@ class MultiPrestamo {
 		return null;
 	}
 	
-	public ResultSet buscar(int id){
+	public Prestamo buscar(Ejemplar e){
+		return null;
+	}
+	
+	public Vector buscar(Usuario u){
+		return null;
+	}
+	
+	public Prestamo buscar(Ejemplar e, Usuario u){
 		return null;
 	}
 	
