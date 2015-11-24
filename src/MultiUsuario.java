@@ -5,6 +5,7 @@ import java.util.Vector;
 class MultiUsuario {
 
 	public Usuario crear(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
+		return null;
 		Usuario usuario=null;
 		String sql;
 		sql="INSERT INTO TUsuario "+
@@ -67,7 +68,7 @@ class MultiUsuario {
 	public Vector buscar(String nombre, String apellido){
 		
 		String sql;
-		ResultSet rs;
+		ResultSet rs = null;
 		Usuario user;
 		Vector<Usuario> usuarios = new Vector<Usuario>();
 		
@@ -75,13 +76,32 @@ class MultiUsuario {
 			+ "FROM TbUsuario "
 			+ "WHERE Nombre LIKE '"+nombre+"' "
 			+ "AND Apellido LIKE '"+apellido+"'";
-		rs = Conector.getConector().ejecutarSQL(sql,true);
-		while (rs.next()) {
-			user = new Usuario (rs.getString("Nombre"), rs.getString("Apellido"), rs.getInt("Identificacion"), 
-					rs.getString("Email"), rs.getString("Direccion"), rs.getInt("Telefono"));
-			usuarios.add(user);
+		try {
+			rs = Conector.getConector().ejecutarSQL(sql,true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		rs.close();
+		try {
+			while (rs.next()) {
+				user = new Usuario (rs.getString("Nombre"), 
+									rs.getString("Apellido"), 
+									rs.getInt("Identificacion"), 
+									rs.getString("Email"), 
+									rs.getString("Direccion"), 
+									rs.getInt("Telefono"));
+				usuarios.add(user);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return usuarios;
 		
@@ -98,7 +118,12 @@ class MultiUsuario {
 				+", Email = '"+u.getEmail()+"' "
 				+", Telefono = "+u.getTelefono()+" "
 			+ "WHERE Identificacion = "+u.getId();
-		Conector.getConector().ejecutarSQL(sql,true);
+		try {
+			Conector.getConector().ejecutarSQL(sql,true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

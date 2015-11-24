@@ -19,13 +19,26 @@ class Multa {
 		
 	}
 	
-	private double calcularCosto(int cantDias){
-		return 0;
+	private double calcularCosto(long diasPasados){
+		
+		double monto;
+		
+		monto = Multa.getCostoPorDia()*diasPasados;
+		
+		return monto;
+		
 	}
 	
 	public double calcularMulta(Date fechaDevolucion){
-		this.calcularCosto(0);
-		return 0;
+		
+		long dias;
+		double monto;
+		
+		dias = (Math.abs((new Date()).getTime() - fechaDevolucion.getTime()))/(24*60*60*1000);
+		monto = this.calcularCosto(dias);
+		
+		return monto;
+		
 	}
 	
 	public static int getConsecutivo() {

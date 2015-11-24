@@ -16,24 +16,24 @@ public class Gestor {
 	public Vector<TreeMap<Object, Object>> consultarUsuario(String nombre, String apellido){
 
 		Vector<TreeMap<Object, Object>> usuarios = new Vector<TreeMap<Object, Object>>();
-		ResultSet busqueda = (new MultiUsuario()).buscar(nombre, apellido);
+		Vector<Usuario> busqueda = (new MultiUsuario()).buscar(nombre, apellido);
 		
 		try {
-			while(busqueda.next()){
+			for(int i = 0; i < busqueda.size(); i++){
 				
 				TreeMap<Object, Object> unUsuario = new TreeMap<Object, Object>();
 				
-				unUsuario.put("id", busqueda.getString("Cedula"));
-				unUsuario.put("nombre", busqueda.getString("Nombre"));
-				unUsuario.put("apellido", busqueda.getString("Apellido"));
-				unUsuario.put("email", busqueda.getString("Email"));
-				unUsuario.put("direccion", busqueda.getString("Direccion"));
-				unUsuario.put("telefono", busqueda.getString("Telefono"));
+				unUsuario.put("id", busqueda.get(i).getId());
+				unUsuario.put("nombre", busqueda.get(i).getNombre());
+				unUsuario.put("apellido", busqueda.get(i).getApellido());
+				unUsuario.put("email", busqueda.get(i).getEmail());
+				unUsuario.put("direccion", busqueda.get(i).getDireccion());
+				unUsuario.put("telefono", busqueda.get(i).getTelefono());
 				
 				usuarios.add(unUsuario);
 				
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println("Error en Gestor/consultarUsuario");
 			e.printStackTrace();
 		}
@@ -90,14 +90,19 @@ public class Gestor {
 	}
 
 	/*recibe paramentros*/	
-	public void devolverLibro(){
+	public String devolverEjemplar(int id, int codigoEjemplar){
 
+		String msj;
+		
+		msj = (new MultiUsuario()).buscar(id).devolverEjemplar(codigoEjemplar);
+		
+		return msj;
 
 	}
 
 	/*recibe paramentros*/
 	public void cancelarMulta(){
-		
+
 
 	}
 

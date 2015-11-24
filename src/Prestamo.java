@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 
 class Prestamo {
@@ -34,13 +35,14 @@ class Prestamo {
 		
 	}
 	
-	public Prestamo(Date fecha, int id, int cDias, int idU, int idE, int activo){
+	public Prestamo(Date fecha, int id, int cDias, int idU, int idE, int idT, int activo){
 		
 		this.setFechaPrestamo(fecha);
 		this.setId(id);
 		this.setCantDias(cDias);
 		this.setIdUsario(idU);
 		this.setIdEjemplar(idE);
+		this.setIdTransaccion(idT);
 		this.setActivo(activo);
 		
 	}
@@ -51,10 +53,9 @@ class Prestamo {
 		
 		this.setActivo(0);
 		if((new Date()).after(this.calcularFechaDevolucion())){
-			double costo;
-			costo = this.aplicarMulta();
+			
 			msj = "Prestamo concluido"+"\n"
-					+ "Multa: "+costo+" colones";
+					+ "Multa: "+this.aplicarMulta()+" colones";
 					
 		}
 		
@@ -75,7 +76,16 @@ class Prestamo {
 	}
 	
 	public Date calcularFechaDevolucion(){
-		return null;
+		
+		Calendar c = Calendar.getInstance();
+		Date devolucion;
+		
+		c.setTime(this.getFechaPrestamo()); // Now use today date.
+		c.add(Calendar.DATE, this.getCantDias()); // Adding 5 days
+		devolucion = c.getTime();
+		
+		return devolucion;
+		
 	}
 	
 	public static int getMaxDias() {

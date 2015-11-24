@@ -24,16 +24,28 @@ public class Usuario {
 	
 	public String devolverEjemplar(int codigoEjemplar){
 		
+		String msj = "El ejemplar que intenta devolver no se encuentra en los prestamos activos de este cliente";
 		Ejemplar ejemplar = null;
+		Prestamo prestamo = null;
 		
 		for(int i = 0; i < this.getPrestamos().size(); i++){
-			if(codigoEjemplar == this.getPrestamos().get(i).getIdEjemplar()){
-				ejemplar = this.getPrestamos().get(i).getEjemp();
+			if(codigoEjemplar == this.getPrestamos().get(i).getIdEjemplar() && this.getPrestamos().get(i).getActivo() != 0){	
+				prestamo = this.getPrestamos().get(i);
+				ejemplar = prestamo.getEjemp();	
 			}
 		}
 		if(ejemplar != null){
 			(new MultiTransaccion()).crear(this, ejemplar, 2, "Devolucion");
+			try {
+				prestamo.concluirPrestamo();
+			} catch (Exception e) {
+				System.out.println("Error en la conclusion del prestamo en Usuario");
+				e.printStackTrace();
+			}
+			msj = "Se ha devuelto el libro";
 		}
+		
+		return msj;
 		
 	}
 	
@@ -75,7 +87,11 @@ public class Usuario {
 	}
 
 	public Vector<Prestamo> getPrestamos() {
-		return prestamos;
+		Vector p;
+		
+		p = (new MultiPrestamo()).buscar(this);
+		
+		return p;
 	}
 
 	public void setPrestamos(Vector<Prestamo> prestamos) {
