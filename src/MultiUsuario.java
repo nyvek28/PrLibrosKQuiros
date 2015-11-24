@@ -5,7 +5,19 @@ import java.util.Vector;
 class MultiUsuario {
 
 	public Usuario crear(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
-		return null;
+		Usuario usuario=null;
+		String sql;
+		sql="INSERT INTO TUsuario "+
+		"VALUES ('"+pnombre+"','"+papellido+"','"+pid+"','"+pemail+"','"+pdireccion+"''"+ptelefono+"');";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+			usuario = new Usuario(pnombre, papellido, pid, pemail, pdireccion,ptelefono);
+		}
+		catch (Exception e) {
+			throw new Exception (".");
+		}
+		return usuario;
+		
 	}
 	
 	public Usuario buscar(int id){
