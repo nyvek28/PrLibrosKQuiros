@@ -1,11 +1,15 @@
+import java.util.Vector;
 
 public class Usuario {
+	
 	private String nombre;
 	private String apellido;
 	private int id;
 	private String email;
 	private String direccion;
 	private int telefono;
+	private Vector<Prestamo> prestamos;
+	private Vector<Multa> multas;
 	
 	public Usuario(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
 		setNombre(pnombre);
@@ -14,7 +18,25 @@ public class Usuario {
 		setEmail(pemail);
 		setDireccion(pdireccion);
 		setTelefono(ptelefono);
+		this.setPrestamos(new Vector<Prestamo>());
+		this.setMultas(new Vector<Multa>());
 	}
+	
+	public String devolverEjemplar(int codigoEjemplar){
+		
+		Ejemplar ejemplar = null;
+		
+		for(int i = 0; i < this.getPrestamos().size(); i++){
+			if(codigoEjemplar == this.getPrestamos().get(i).getIdEjemplar()){
+				ejemplar = this.getPrestamos().get(i).getEjemp();
+			}
+		}
+		if(ejemplar != null){
+			(new MultiTransaccion()).crear(this, ejemplar, 2, "Devolucion");
+		}
+		
+	}
+	
 	public void setNombre(String pnombre){
 		nombre=pnombre;
 	}
@@ -50,6 +72,22 @@ public class Usuario {
 	}
 	public int getTelefono(){
 		return telefono;
+	}
+
+	public Vector<Prestamo> getPrestamos() {
+		return prestamos;
+	}
+
+	public void setPrestamos(Vector<Prestamo> prestamos) {
+		this.prestamos = prestamos;
+	}
+
+	public Vector<Multa> getMultas() {
+		return multas;
+	}
+
+	public void setMultas(Vector<Multa> multas) {
+		this.multas = multas;
 	}
 
 			

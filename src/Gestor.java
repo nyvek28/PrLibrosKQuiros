@@ -12,10 +12,10 @@ public class Gestor {
 	}
 	
 	/*recibe paramentros*/
-	public Vector<TreeMap<Object, Object>> consultarUsuario(String nombre){
+	public Vector<TreeMap<Object, Object>> consultarUsuario(String nombre, String apellido){
 
 		Vector<TreeMap<Object, Object>> usuarios = new Vector<TreeMap<Object, Object>>();
-		ResultSet busqueda = (new MultiUsuario()).buscar(nombre);
+		ResultSet busqueda = (new MultiUsuario()).buscar(nombre, apellido);
 		
 		try {
 			while(busqueda.next()){

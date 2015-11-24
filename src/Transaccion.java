@@ -37,7 +37,37 @@ class Transaccion {
 		this.setUser(u);
 		
 	}
-
+	
+	private void realizarAccion(int t) {
+		
+		switch(t){
+		
+			case 0:
+			case 2:
+				this.getEjemplar().setCondicionActual(0);
+				break;
+				
+			case 1:
+				this.getEjemplar().setCondicionActual(1);
+				break;
+				
+			case 3:
+				this.getEjemplar().setCondicionActual(2);
+				break;
+				
+			case 4:
+			case 5:
+				this.getEjemplar().setCondicionActual(3);
+				break;
+				
+			default:
+				this.getEjemplar().setCondicionActual(0);
+				break;
+		
+		}
+			
+	}
+	
 	public Date getFecha() {
 		return fecha;
 	}
@@ -52,7 +82,10 @@ class Transaccion {
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
+		this.realizarAccion(this.getTipo());
 	}
+
+	
 
 	public int getIdUsuario() {
 		return idUsuario;
@@ -79,7 +112,11 @@ class Transaccion {
 	}
 
 	public Ejemplar getEjemplar() {
-		return ejemplar;
+		Ejemplar e;
+		
+		e = (new MultiEjemplar()).buscar(this.getIdEjemplar());
+		
+		return e;
 	}
 
 	public void setEjemplar(Ejemplar ejemplar) {

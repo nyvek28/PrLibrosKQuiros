@@ -1,15 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dbtest;
 
 import java.sql.*;
 /**
  *
  * @author Emilio
  */
-public class AccesoBD {
+public class AccesoDB {
     
     private Connection conn=null;
     private Statement st;
     
-    public AccesoBD(String driver,String conexion) throws SQLException,Exception{
+    public AccesoDB(String driver,String conexion) throws SQLException,Exception{
         
 	Class.forName(driver);
 	conn = DriverManager.getConnection(conexion);
@@ -53,9 +59,9 @@ public class AccesoBD {
         	conn.close();	
 	}
 	catch(Exception e){
-            /*este método es llamado por el
+            /*este mÃ©todo es llamado por el
              *garbage collector, por lo tanto
-             *se atrapa la excepción pero no se
+             *se atrapa la excepciÃ³n pero no se
              *reporta*/			
         }
     }	

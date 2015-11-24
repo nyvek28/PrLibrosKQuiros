@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.Date;
 
 class Prestamo {
@@ -13,6 +14,7 @@ class Prestamo {
 	private Usuario user;
 	private Ejemplar ejemp;
 	private Transaccion trans;
+	private int activo;
 	
 	public Prestamo(Usuario u, Ejemplar e, int numDias){
 		
@@ -28,17 +30,52 @@ class Prestamo {
 		t = (new MultiTransaccion()).crear(this.getUser(), this.getEjemp(), 1, "Prestamo");
 		this.setTrans(t);
 		this.setIdTransaccion(t.getId());
+		this.setActivo(1);
 		
 	}
 	
-	public Prestamo(Date fecha, int id, int cDias, int idU, int idE){
+	public Prestamo(Date fecha, int id, int cDias, int idU, int idE, int activo){
 		
 		this.setFechaPrestamo(fecha);
 		this.setId(id);
 		this.setCantDias(cDias);
 		this.setIdUsario(idU);
 		this.setIdEjemplar(idE);
+		this.setActivo(activo);
 		
+	}
+	
+	public String concluirPrestamo() throws SQLException, Exception{
+		
+		String msj = "Prestamo concluido a tiempo";
+		
+		this.setActivo(0);
+		if((new Date()).after(this.calcularFechaDevolucion())){
+			double costo;
+			costo = this.aplicarMulta();
+			msj = "Prestamo concluido"+"\n"
+					+ "Multa: "+costo+" colones";
+					
+		}
+		
+		return msj;
+		
+	}
+	
+	public double aplicarMulta() throws SQLException, Exception{
+		
+		double costo;
+		Multa m;
+		
+		m = (new MultiMulta()).crear(this.getUser());
+		costo = m.calcularMulta(this.calcularFechaDevolucion());
+		
+		return costo;
+		
+	}
+	
+	public Date calcularFechaDevolucion(){
+		return null;
 	}
 	
 	public static int getMaxDias() {
@@ -112,6 +149,14 @@ class Prestamo {
 
 	public void setTrans(Transaccion trans) {
 		this.trans = trans;
+	}
+
+	public int getActivo() {
+		return activo;
+	}
+
+	public void setActivo(int activo) {
+		this.activo = activo;
 	}
 	
 	

@@ -36,6 +36,17 @@ class Ejemplar {
 		
 	}
 	
+	public String condicionActualToString(){
+		
+		String[] condicion = {"Libre","Prestado","Reservado","Fuera de Uso"};
+		String msj;
+		
+		msj = condicion[this.getCondicionActual()];
+		
+		return msj;
+		
+	}
+	
 	public Libro getLibro() {
 		return libro;
 	}

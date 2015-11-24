@@ -1,4 +1,5 @@
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 class MultiUsuario {
@@ -10,20 +11,42 @@ class MultiUsuario {
 	public Usuario buscar(int id){
 		
 		String sql;
-		ResultSet rs;
-		Usuario user;
+		ResultSet rs = null;
+		Usuario user  = null;
 		
 		sql = "SELECT * "
 			+ "FROM TbUsuario "
 			+ "WHERE Identificacion = "+id;
-		rs = Conector.getConector().ejecutarSQL(sql,true);
-		if (rs.next()) {
-			user = new Usuario (rs.getString("Nombre"), rs.getString("Apellido"), rs.getInt("Identificacion"), 
-					rs.getString("Email"), rs.getString("Direccion"), rs.getInt("Telefono"));
-		} else {
-			user = null;
+		try {
+			rs = Conector.getConector().ejecutarSQL(sql,true);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		rs.close();
+		try {
+			if (rs.next()) {
+				user = new Usuario (rs.getString("Nombre"), 
+						rs.getString("Apellido"), 
+						rs.getInt("Identificacion"), 
+						rs.getString("Email"), 
+						rs.getString("Direccion"), 
+						rs.getInt("Telefono"));
+			} else {
+				user = null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return user;
 		

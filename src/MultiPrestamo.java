@@ -11,7 +11,7 @@ class MultiPrestamo {
 		return null;
 	}
 	
-	public Vector buscar(Usuario u){
+	public Vector<Prestamo> buscar(Usuario u){
 		return null;
 	}
 	
