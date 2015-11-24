@@ -6,8 +6,9 @@ import java.util.Vector;
 public class Gestor {
 	
 	/*recibe parametros*/
-	public void registrarCliente(){
-
+	public void registrarCliente(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
+		Usuario usuario;
+		usuario= (new MultiUsuario()).crear(pnombre, papellido, pid, pemail, pdireccion, ptelefono);
 
 	}
 	
@@ -96,7 +97,7 @@ public class Gestor {
 
 	/*recibe paramentros*/
 	public void cancelarMulta(){
-
+		
 
 	}
 
