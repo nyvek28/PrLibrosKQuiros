@@ -9,7 +9,7 @@ public class MultiLibro {
 	
 	public Libro crear(String ptitulo, String pvolumen, String peditorial, String pfecha, ArrayList<Autor> listaAutores,ArrayList<DescriptorAsociado> plistaDescriptores) throws java.sql.SQLException,Exception{
 		
-		Libro libro=null;/*
+		Libro libro=null;
 		String sql;
 		sql="INSERT INTO TLibro "+
 		"VALUES ('"+ptitulo+"','"+pvolumen+"','"+peditorial+"','"+pfecha+"','"+listaAutores+"''"+plistaDescriptores+"');";
@@ -19,7 +19,7 @@ public class MultiLibro {
 		}
 		catch (Exception e) {
 			throw new Exception (".");
-		}*/
+		}
 		return libro;
 	}
 	

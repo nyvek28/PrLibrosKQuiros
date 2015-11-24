@@ -6,7 +6,7 @@ import java.util.Vector;
 public class Gestor {
 	
 	/*recibe parametros*/
-	public void registrarCliente(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
+	public void registrarCliente(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono)throws Exception{
 		Usuario usuario;
 		usuario= (new MultiUsuario()).crear(pnombre, papellido, pid, pemail, pdireccion, ptelefono);
 
@@ -78,7 +78,7 @@ public class Gestor {
 	}
 
 	/*recibe paramentros*/
-	public void reservarEjemplar(){
+	public void reservarEjemplar(int pid){
 
 
 	}

@@ -4,8 +4,8 @@ import java.util.Vector;
 
 class MultiUsuario {
 
-	public Usuario crear(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
-		return null;
+	public Usuario crear(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono)throws Exception{
+		
 		Usuario usuario=null;
 		String sql;
 		sql="INSERT INTO TUsuario "+
