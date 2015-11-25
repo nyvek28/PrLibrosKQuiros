@@ -48,6 +48,13 @@ public class Usuario {
 		return msj;
 		
 	}
+	public String reservarEjemplar(int codigoEjemplar){
+		
+		(new MultiEjemplar()).buscar(codigoEjemplar).setCondicionActual(2);
+		String x="";
+		return x;
+		
+	}
 	
 	public void setNombre(String pnombre){
 		nombre=pnombre;

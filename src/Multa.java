@@ -8,6 +8,7 @@ class Multa {
 	private Date fecha;
 	private int idUsuario;
 	private Usuario user;
+	private int estado;
 	
 	public Multa(Usuario u){
 		
@@ -16,6 +17,7 @@ class Multa {
 		this.setIdUsuario(u.getId());
 		this.setUser(u);
 		u.getMultas().add(this);
+		setEstado(1);
 		
 	}
 	
@@ -28,6 +30,9 @@ class Multa {
 		return monto;
 		
 	}
+	public void cancelar(){
+		setEstado(0);
+	}
 	
 	public double calcularMulta(Date fechaDevolucion){
 		
@@ -39,6 +44,12 @@ class Multa {
 		
 		return monto;
 		
+	}
+	public void setEstado(int pestado){
+		pestado=estado;
+	}
+	public int getEstado(){
+		return estado;
 	}
 	
 	public static int getConsecutivo() {
