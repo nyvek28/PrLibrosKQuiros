@@ -7,6 +7,7 @@ public class Gestor {
 	
 	/*recibe parametros*/
 	public void registrarCliente(String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono)throws Exception{
+		
 		Usuario usuario;
 		usuario= (new MultiUsuario()).crear(pnombre, papellido, pid, pemail, pdireccion, ptelefono);
 
@@ -77,32 +78,37 @@ public class Gestor {
 
 	}
 
-	/*recibe paramentros*/
-	public void reservarEjemplar(int pid){
+	/*recibe parametros*/
+	public String reservarEjemplar(int pidEjemplar, int idUsuario ){
+			
+		Ejemplar ejemplar;
+		ejemplar=(new MultiEjemplar()).buscar(pidEjemplar);
+		
+		msj=(new MultiUsuario()).buscar(idUsuario).reservarEjemplar(pidEjemplar);
+		
+		
 
 
 	}
 
 	/*recibe paramentros*/
 	public void prestarEjemplar(){
-
+		
 
 	}
 
-	/*recibe paramentros*/	
+	/*recibe parametros*/	
 	public String devolverEjemplar(int id, int codigoEjemplar){
 
 		String msj;
-		
 		msj = (new MultiUsuario()).buscar(id).devolverEjemplar(codigoEjemplar);
-		
 		return msj;
 
 	}
 
 	/*recibe paramentros*/
 	public void cancelarMulta(){
-
+		
 
 	}
 
@@ -121,6 +127,7 @@ public class Gestor {
 
 	/* recibe parametros */
 	public void registrarLibro(){
+		
 
 
 	}

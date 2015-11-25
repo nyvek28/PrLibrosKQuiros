@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 class MultiTransaccion {
 
 	public Transaccion crear(Usuario u, Ejemplar e, int pTipo, String pDesccripcion){
+		
 		return null;
 	}
 	
