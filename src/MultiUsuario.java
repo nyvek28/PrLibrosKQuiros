@@ -93,13 +93,11 @@ class MultiUsuario {
 				usuarios.add(user);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -121,13 +119,23 @@ class MultiUsuario {
 		try {
 			Conector.getConector().ejecutarSQL(sql,true);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public void borrar(Usuario u, String pnombre, String papellido, int pid, String pemail, String pdireccion, int ptelefono){
+	public void borrar(Usuario u){
+		
+		String sql;
+		
+		sql = "DELETE *"
+			+ "FROM TbUsuario"
+			+ "WHERE Identificacion = "+u.getId();
+		try{
+			Conector.getConector().ejecutarSQL(sql, true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 	

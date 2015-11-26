@@ -123,17 +123,43 @@ public class Gestor {
 
 
 	/*recibe paramentros*/
-	public void eliminarCliente(){
+	public String eliminarUsuario(int id){
 
-
+		Usuario u;
+		String msj;
+		
+		u = (new MultiUsuario()).buscar(id);
+		try{
+			if(u != null){
+				(new MultiUsuario()).borrar(u);
+				msj = "Se ha borrado el usuario";
+			}else{
+				msj = "No se ha encontrado el usuario de id: "+id;
+			}
+		}catch(Exception e){
+			msj = "Ocurrio un error al intentar borrar al usuario, porfavor intentelo de nuevo";
+		}
+		
+		return msj;
+		
 	}
 
 	/* recibe parametros */
 	/*Hace falta validacion dobre si el libro ya esta registrado*/
-	public void registrarLibro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares)throws Exception{
+	public String registrarLibro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares)throws Exception{
+		
 		Libro libro;
-		libro=(new MultiLibro()).crear(ptitulo, pvolumen, peditorial, pfecha, plistaAutores, plistaDescriptores,plistaEjemplares);
-
+		String msj;
+		
+		try{
+			libro=(new MultiLibro()).crear(ptitulo, pvolumen, peditorial, pfecha, plistaAutores, plistaDescriptores,plistaEjemplares);
+			msj = "Se ha registrado el libro corectamente";
+		}catch(Exception e){
+			e.printStackTrace();
+			msj = "Ocurrio un error al registrar el libro, porfavor intentelo de nuevo";
+		}
+		
+		return msj;
 
 	}
 
