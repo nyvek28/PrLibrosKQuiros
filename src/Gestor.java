@@ -132,7 +132,7 @@ public class Gestor {
 	/*Hace falta validacion dobre si el libro ya esta registrado*/
 	public void registrarLibro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares)throws Exception{
 		Libro libro;
-		libro=(new MultiLibro()).crear(ptitulo, pvolumen, peditorial, pfecha, plistaAutores, plistaDescriptores);
+		libro=(new MultiLibro()).crear(ptitulo, pvolumen, peditorial, pfecha, plistaAutores, plistaDescriptores,plistaEjemplares);
 
 
 	}
@@ -165,10 +165,23 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public String consultarEjemplar(){
-
+	public TreeMap<Object,Object> consultarEjemplar(int pid){
+		Ejemplar ejem;
+		TreeMap<Object,Object> datos = new TreeMap<Object,Object>();
+		
+		ejem = (new MultiEjemplar()).buscar(pid);
+		
+		datos.put("identificacion", ejem.getId());
+		datos.put("titulo", ejem.getTitulo());
+		datos.put("apellido", ejem.getApellido());
+		datos.put("telefono", ejem.getTelefono());
+		datos.put("email", ejem.getEmail());
+		datos.put("direccion", ejem.getDireccion());
+		
+		
+		return datos;
 		// consultar ejemplar
-		String x = "";
+		
 		return x;
 		
 	}

@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 public class MultiLibro {
 	
-	public Libro crear(String ptitulo, String pvolumen, String peditorial, String pfecha, ArrayList<Autor> listaAutores,ArrayList<DescriptorAsociado> plistaDescriptores) throws java.sql.SQLException,Exception{
+	public Libro crear(String ptitulo, String pvolumen, String peditorial, String pfecha, ArrayList<Autor> listaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares) throws java.sql.SQLException,Exception{
 		
 		Libro libro=null;
 		String sql;
 		sql="INSERT INTO TLibro "+
-		"VALUES ('"+ptitulo+"','"+pvolumen+"','"+peditorial+"','"+pfecha+"','"+listaAutores+"''"+plistaDescriptores+"');";
+		"VALUES ('"+ptitulo+"','"+pvolumen+"','"+peditorial+"','"+pfecha+"','"+listaAutores+"''"+plistaDescriptores+"','"+plistaEjemplares+"');";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
-			libro = new Libro(ptitulo, pvolumen, peditorial, pfecha, plistaAutores,plistaDescriptores);
+			libro = new Libro(ptitulo, pvolumen, peditorial, pfecha, listaAutores,plistaDescriptores,plistaEjemplares);
 		}
 		catch (Exception e) {
 			throw new Exception (".");
@@ -49,12 +49,12 @@ public class MultiLibro {
 	
 	public  Libro buscar(int codigo) throws java.sql.SQLException,Exception{
 		
-		Libro libro = null;/*
+		Libro libro = null;
 		java.sql.ResultSet rs;
 		String sql;
 		sql = "SELECT titulo,volumen,editorial,fecha,listaAutores,listaDescriptores "+
 		"FROM TLibro "+
-		"WHERE titulo='"+ptitulo+"';";
+		"WHERE codigo='"+codigo+"';";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			libro = new Libro(
@@ -67,14 +67,14 @@ public class MultiLibro {
 		} else {
 			throw new Exception (".");
 		}
-		rs.close();*/
+		rs.close();
 		return libro; 
 	}
 	
 	
 	public  void actualizar(Libro plibro) throws java.sql.SQLException,Exception{
 		
-		/*String sql;
+		String sql;
 		sql="UPDATE TLibro "+
 		"SET titulo="+plibro.getTitulo()+", "+
 		"volumen='"+plibro.getVolumen()+"', "+
@@ -86,20 +86,20 @@ public class MultiLibro {
 		}
 		catch (Exception e) {
 			throw new Exception ("");
-		} */
+		} 
 	}
 	
 	public  void borrar(Libro plibro) throws java.sql.SQLException,Exception{
 		
-		/*java.sql.ResultSet rs;
+		java.sql.ResultSet rs;
 		String sql;
 		sql= "DELETE FROM TLibro "+
-		"WHERE titulo='"+pcuenta.getTitulo()+"';";
+		"WHERE titulo='"+plibro.getTitulo()+"';";
 		try {
 			Conector.getConector().ejecutarSQL(sql);
 		}
 		catch (Exception e) {
 			throw new Exception ("");
-		}*/
+		}
 	}
 }
