@@ -1,5 +1,7 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.TreeMap;
 import java.util.Vector;
 
@@ -83,8 +85,9 @@ public class Gestor {
 			
 		Ejemplar ejemplar;
 		ejemplar=(new MultiEjemplar()).buscar(pidEjemplar);
-		
+		String msj;
 		msj=(new MultiUsuario()).buscar(idUsuario).reservarEjemplar(pidEjemplar);
+		return msj;
 		
 		
 
@@ -126,8 +129,10 @@ public class Gestor {
 	}
 
 	/* recibe parametros */
-	public void registrarLibro(){
-		
+	/*Hace falta validacion dobre si el libro ya esta registrado*/
+	public void registrarLibro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares)throws Exception{
+		Libro libro;
+		libro=(new MultiLibro()).crear(ptitulo, pvolumen, peditorial, pfecha, plistaAutores, plistaDescriptores);
 
 
 	}
