@@ -23,27 +23,49 @@ public class MultiLibro {
 		return libro;
 	}
 	
-	public  Libro buscar(String ptitulo, String columna) throws java.sql.SQLException,Exception{
+	public  Libro buscarTitulo(String ptitulo) throws java.sql.SQLException,Exception{
 		
-		Libro libro = null;/*
+		Libro libro = null;
 		java.sql.ResultSet rs;
 		String sql;
 		sql = "SELECT titulo,volumen,editorial,fecha,listaAutores,listaDescriptores "+
 		"FROM TLibro "+
-		"WHERE" + columna + " LIKE "+ptitulo+"';";
+		"WHERE Titulo LIKE '"+ptitulo+"'";
 		rs = Conector.getConector().ejecutarSQL(sql,true);
 		if (rs.next()){
 			libro = new Libro(
+				rs.getString("isbn"),
 				rs.getString("titulo"),
 				rs.getString("volumen"),
 				rs.getString("editorial"),
-				rs.getDouble("fecha"),
-				rs.getDouble("listaAutores"),
-				rs.getString("listaDescriptores"));
+				rs.getString("fecha"));
 		} else {
 			throw new Exception (".");
 		}
-		rs.close();*/
+		rs.close();
+		return libro; 
+	}
+	
+	public  Libro buscarIsbn(String isbn) throws java.sql.SQLException,Exception{
+		
+		Libro libro = null;
+		java.sql.ResultSet rs;
+		String sql;
+		sql = "SELECT titulo,volumen,editorial,fecha,listaAutores,listaDescriptores "+
+		"FROM TLibro "+
+		"WHERE Isbn = '"+isbn+"'";
+		rs = Conector.getConector().ejecutarSQL(sql,true);
+		if (rs.next()){
+			libro = new Libro(
+				rs.getString("isbn"),
+				rs.getString("titulo"),
+				rs.getString("volumen"),
+				rs.getString("editorial"),
+				rs.getString("fecha"));
+		} else {
+			throw new Exception (".");
+		}
+		rs.close();
 		return libro; 
 	}
 	

@@ -23,6 +23,32 @@ public class Libro {
         this.setListaAutores(plistaAutores);
         this.setListaDescriptores(listaDescriptores);
     }
+	
+	public Libro(String isbn, String titulo, String volumen, String editorial, String fecha){
+		
+		this.setIsbn(isbn);
+		this.setTitulo(titulo);
+		this.setVolumen(volumen);
+		this.setEditorial(editorial);
+		this.setFecha(fecha);
+		
+	}
+	
+	public String registrarEjemplar(int estadoFisico){
+		
+		String msj;
+		Ejemplar e;
+		
+		try{
+			e = (new MultiEjemplar()).crear(this, estadoFisico);
+			msj = "Se ha registrado el ejemplar codigo " +e.getId() +" de libro "+e.getLibro().getTitulo();
+		}catch(Exception s){
+			msj = "Ocurrio un error al intentar registrar este ejemplar, porfavor intentelo de nuevo";
+		}
+		
+		return msj;
+		
+	}
     
 	/**
 	 * @return the consecutivo
