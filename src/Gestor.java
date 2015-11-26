@@ -164,7 +164,22 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public void modificarLibro(){
+	public void modificarLibro(String pisbn,String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares)throws Exception{
+		Libro libro = (new MultiLibro()).buscar(pisbn);
+		libro.setIsbn(pisbn);
+		libro.setTitulo(ptitulo);
+		libro.setVolumen(pvolumen);
+		libro.setEditorial(peditorial);
+		libro.setFecha(pfecha);
+		libro.setListaAutores(plistaAutores);
+		libro.setListaDescriptores(plistaDescriptores);
+		
+		
+		try{
+			(new MultiLibro()).actualizar(libro);
+		}catch(Exception e){
+			System.out.println("Error en Gestor/modificarUsuario/.actuaizar(user)");
+		}
 
 
 	}
@@ -198,23 +213,22 @@ public class Gestor {
 		ejem = (new MultiEjemplar()).buscar(pid);
 		
 		datos.put("identificacion", ejem.getId());
-		datos.put("titulo", ejem.getTitulo());
-		datos.put("apellido", ejem.getApellido());
-		datos.put("telefono", ejem.getTelefono());
-		datos.put("email", ejem.getEmail());
-		datos.put("direccion", ejem.getDireccion());
+		datos.put("Estado Fisico", ejem.getEstadoFisico());
+		datos.put("CondicionActual", ejem.getCondicionActual());
+		datos.put("titulo", (ejem.getLibro()).getTitulo());
+		
 		
 		
 		return datos;
 		// consultar ejemplar
 		
-		return x;
+		
 		
 	}
 
 	/*recibe parametros*/
 	public void eliminarEjemplar(){
-
+		
 
 	}
 
@@ -225,8 +239,20 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public String consultarTransaccion(){
-
+	public String consultarTransaccion(int pid){
+		Transaccion trans;
+		TreeMap<Object,Object> datos = new TreeMap<Object,Object>();
+		
+		trans = (new MultiTransaccion()).buscar(pid);
+		
+		datos.put("identificacion", ejem.getId());
+		datos.put("Estado Fisico", ejem.getEstadoFisico());
+		datos.put("CondicionActual", ejem.getCondicionActual());
+		datos.put("titulo", (ejem.getLibro()).getTitulo());
+		
+		
+		
+		return datos;
 		// consultar transaccion
 		String x = "";
 		return x;
@@ -248,8 +274,20 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public void modificarAutor(){
-
+	public void modificarAutor(String pnombre, String papellido, int pid, String pemail, String pnacionalidad, String ppaisOrigen)throws Exception{
+		Autor autor;
+		autor.setNombre(pnombre);
+		autor.setApellido(papellido);
+		autor.setId(pid);
+		autor.setEmail(pemail);
+		autor.setNacionalidad(pnacionalidad);
+		autor.setPaisOrigen(ppaisOrigen);
+		
+		try{
+			(new MultiAutor()).actualizar(autor);
+		}catch(Exception e){
+			System.out.println("Error en Gestor/modificarUsuario/.actuaizar(user)");
+		}
 
 	}
 
@@ -267,7 +305,7 @@ public class Gestor {
 	// DA: descriptor asociado
 
 	public void registrarDA(){
-
+		
 
 	}
 

@@ -39,7 +39,7 @@ public class Autor {
 			public	 void setNacionalidad(String pnacionalidad){
 				nacionalidad=pnacionalidad;
 			}
-			private void setPaisOrigen(String ppaisOrigen){
+			public void setPaisOrigen(String ppaisOrigen){
 				paisOrigen=ppaisOrigen;
 			}
 			public String getNombre(){

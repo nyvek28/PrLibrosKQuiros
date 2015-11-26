@@ -7,7 +7,7 @@ class MultiTransaccion {
 		return null;
 	}
 	
-	public ResultSet buscar(int id){
+	public Transaccion buscar(int id){
 		return null;
 	}
 	

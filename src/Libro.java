@@ -12,10 +12,10 @@ public class Libro {
     static int consecutivo = 0;
 
 
-	public Libro(String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares){
+	public Libro(String pisbn,String ptitulo,String pvolumen, String peditorial, String pfecha,ArrayList<Autor> plistaAutores,ArrayList<DescriptorAsociado> plistaDescriptores,ArrayList<Ejemplar> plistaEjemplares){
         
-		setConsecutivo(getConsecutivo() + 1);
-        this.setIsbn(Integer.toString(getConsecutivo()));
+		
+        this.setIsbn(pisbn);
         this.setTitulo(ptitulo);
         this.setVolumen(pvolumen);
         this.setEditorial(peditorial);
@@ -51,18 +51,7 @@ public class Libro {
 	}
     
 	/**
-	 * @return the consecutivo
-	 */
-	public static int getConsecutivo() {
-		return consecutivo;
-	}
-
-	/**
-	 * @param consecutivo the consecutivo to set
-	 */
-	public static void setConsecutivo(int consecutivo) {
-		Libro.consecutivo = consecutivo;
-	}
+	
 	
     /**
 	 * @return the listaEjemplares

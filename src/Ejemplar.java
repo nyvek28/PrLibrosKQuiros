@@ -16,7 +16,7 @@ class Ejemplar {
 	public Ejemplar(Date fechaIngreso, int id, int estadoFisico, int condicionActual, String isbn) throws SQLException, Exception {
 		
 		this.setIsbn(isbn);
-		this.setLibro((new MultiLibro().buscar(isbn,"Isbn")));
+		this.setLibro((new MultiLibro().buscar(isbn)));
 		this.setFechaIngreso(fechaIngreso);
 		this.setId(id);
 		this.setEstadoFisico(estadoFisico);
@@ -100,6 +100,9 @@ class Ejemplar {
 
 	public void setIsbn(String string) {
 		this.isbn = string;
+	}
+	public String toString(){
+		Libro libro=(new MultiLibro()).buscar(this.getIsbn());
 	}
 	
 	
