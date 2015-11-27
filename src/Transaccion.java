@@ -35,6 +35,8 @@ class Transaccion {
 		this.setIdEjemplar(e.getId());
 		this.setEjemplar(e);
 		this.setUser(u);
+		realizarAccion(pTipo);
+		this.getEjemplar().getTransacciones().add(this);
 		
 	}
 	
