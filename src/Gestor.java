@@ -194,8 +194,20 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public void registrarEjemplar(){
+	public String registrarEjemplar(String isbn, int estadoFisico) throws SQLException, Exception{
 
+		String msj;
+		Libro l;
+		
+		
+		l = (new MultiLibro()).buscarIsbn(isbn);
+		if (l != null){
+			msj = l.registrarEjemplar(estadoFisico);
+		}else{
+			msj = "El libro que ingreso, de ISBN " + isbn + " no se encuentra.";
+		}
+		
+		return msj;
 
 	}
 

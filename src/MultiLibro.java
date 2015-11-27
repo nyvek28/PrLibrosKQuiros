@@ -48,7 +48,7 @@ public class MultiLibro {
 	
 	public  Libro buscarIsbn(String isbn) throws java.sql.SQLException,Exception{
 		
-		Libro libro = null;
+		Libro libro;
 		java.sql.ResultSet rs;
 		String sql;
 		sql = "SELECT titulo,volumen,editorial,fecha,listaAutores,listaDescriptores "+
@@ -63,7 +63,7 @@ public class MultiLibro {
 				rs.getString("editorial"),
 				rs.getString("fecha"));
 		} else {
-			throw new Exception (".");
+			libro = null;
 		}
 		rs.close();
 		return libro; 

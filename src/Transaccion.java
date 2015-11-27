@@ -68,6 +68,17 @@ class Transaccion {
 			
 	}
 	
+	public String tipoToString(){
+		
+		String tipo;
+		String[] tipos = {"Entrada","Prestamo","Devolucion","Reservacion","Salida","Fuera de Uso"};
+		
+		tipo = tipos[this.getTipo()];
+		
+		return tipo;
+		
+	}
+	
 	public Date getFecha() {
 		return fecha;
 	}
