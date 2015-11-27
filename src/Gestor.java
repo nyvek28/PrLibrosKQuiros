@@ -302,11 +302,25 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public String consultarAutor(){
+	public TreeMap consultarAutor(int id){
 
-		// consultar autor
-		String x = "";
-		return x;
+		TreeMap datos = new TreeMap();
+		Autor a;
+		
+		a = (new MultiAutor()).buscar(id);
+		if(a != null){
+			datos.put("id", a.getId());
+			datos.put("nombre", a.getNombre());
+			datos.put("apellido", a.getApellido());
+			datos.put("email", a.getEmail());
+			datos.put("paisOrigen", a.getPaisOrigen());
+			datos.put("nacionalidad", a.getNacionalidad());
+		}else{
+			datos = null;
+		}
+		
+		return datos;
+		
 	}
 
 	/*recibe parametros*/
@@ -328,7 +342,7 @@ public class Gestor {
 		try{
 			(new MultiAutor()).actualizar(autor);
 		}catch(Exception e){
-			System.out.println("Error en Gestor/modificarUsuario/.actuaizar(user)");
+			System.out.println("Error en Gestor/modificarUsuario/.actualizar(user)");
 		}
 
 	}
