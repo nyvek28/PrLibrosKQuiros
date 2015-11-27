@@ -245,10 +245,31 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public void mostrarHistorialTransacciones(){
+	public String mostrarHistorialTransacciones(int id){
 
-
-	}
+		ArrayList<Transaccion> transacciones;
+		Ejemplar e;
+		String msj = "";
+		
+		e = (new MultiEjemplar()).buscar(id);
+		if(e != null){
+			transacciones = e.getTransacciones();
+			if(transacciones.size() > 0){
+				for(int i = 0; i < transacciones.size(); i++){
+					msj += "-----------------------------------------"+
+							"Id: "+transacciones.get(i).getId()+"\n"+
+							"Fecha: "+this.formatearFecha(transacciones.get(i).getFecha())+"\n"+
+							"Tipo: "+transacciones.get(i).tipoToString()+"\n"+
+							"Usuario: "+transacciones.get(i).getUser().getNombre()+" "+transacciones.get(i).getUser().getApellido()+"\n"+
+							"Ejemplar: "+transacciones.get(i).getEjemplar().getLibro().getTitulo()+"\n"+
+							"-----------------------------------------\n\n";
+				}
+			}else{
+				msj = "Este ejemplar no tiene transacciones";
+			}
+		}else{
+			msj = "No se encontro el ejemplar que busca";
+		}
 
 	/*recibe parametros*/
 	public String consultarTransaccion(int pid){
