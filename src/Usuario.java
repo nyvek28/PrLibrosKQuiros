@@ -55,6 +55,11 @@ public class Usuario {
 		return x;
 		
 	}
+	public void cancelarMulta(){
+		
+		
+		
+	}
 	
 	public void setNombre(String pnombre){
 		nombre=pnombre;
@@ -104,7 +109,7 @@ public class Usuario {
 		multi.actualizar(e);
 	}
 
-	public Vector<Prestamo> getPrestamos() {
+	public Vector<Prestamo> getPrestamos() throws Exception{
 		Vector p;
 		
 		p = (new MultiPrestamo()).buscar(this);

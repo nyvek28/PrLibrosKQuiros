@@ -132,7 +132,6 @@ public class Gestor {
 	/*recibe paramentros*/
 	public void cancelarMulta(){
 		
-	}
 		
 
 	}
