@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 class MultiPrestamo {
@@ -78,7 +79,7 @@ class MultiPrestamo {
 	public Date fechaToDate(String texto) throws ParseException{		
 		Date fecha;
 		
-		DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa");
+		DateFormat formatter = new SimpleDateFormat("dd-MMM-yy", Locale.ENGLISH);
 		fecha = formatter.parse(texto);
 		
 		return fecha;

@@ -131,7 +131,11 @@ class Prestamo {
 		this.user = user;
 	}
 	public Ejemplar getEjemp() {
-		return ejemp;
+		Ejemplar e;
+		
+		e = (new MultiEjemplar()).buscar(this.getIdEjemplar());
+		
+		return e;
 	}
 	public void setEjemp(Ejemplar ejemp) {
 		this.ejemp = ejemp;

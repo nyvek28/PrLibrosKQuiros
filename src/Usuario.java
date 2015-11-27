@@ -43,6 +43,8 @@ public class Usuario {
 				e.printStackTrace();
 			}
 			msj = "Se ha devuelto el libro";
+		}else{
+			
 		}
 		
 		return msj;

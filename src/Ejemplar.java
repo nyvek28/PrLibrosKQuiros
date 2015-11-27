@@ -16,7 +16,7 @@ class Ejemplar {
 	public Ejemplar(Date fechaIngreso, int id, int estadoFisico, int condicionActual, String isbn) throws SQLException, Exception {
 		
 		this.setIsbn(isbn);
-		this.setLibro((new MultiLibro().buscar(isbn)));
+		this.setLibro((new MultiLibro().buscarIsbn(isbn)));
 		this.setFechaIngreso(fechaIngreso);
 		this.setId(id);
 		this.setEstadoFisico(estadoFisico);
@@ -47,8 +47,12 @@ class Ejemplar {
 		
 	}
 	
-	public Libro getLibro() {
-		return libro;
+	public Libro getLibro() throws SQLException, Exception {
+		Libro l;
+		
+		l = (new MultiLibro()).buscarIsbn(getIsbn());
+		
+		return l;
 	}
 	public void setLibro(Libro libro) {
 		this.libro = libro;
@@ -102,7 +106,12 @@ class Ejemplar {
 		this.isbn = string;
 	}
 	public String toString(){
-		Libro libro=(new MultiLibro()).buscar(this.getIsbn());
+		try {
+			Libro libro=(new MultiLibro()).buscarIsbn(this.getIsbn());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

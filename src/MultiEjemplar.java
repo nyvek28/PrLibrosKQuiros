@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 class MultiEjemplar {
 
@@ -107,7 +108,7 @@ class MultiEjemplar {
 	public Date fechaToDate(String texto) throws ParseException{		
 		Date fecha;
 		
-		DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa");
+		DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 		fecha = formatter.parse(texto);
 		
 		return fecha;

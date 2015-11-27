@@ -113,7 +113,7 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/	
-	public String devolverEjemplar(int id, int codigoEjemplar){
+	public String devolverEjemplar(int id, int codigoEjemplar) throws Exception{
 
 		String msj;
 		Usuario u;
