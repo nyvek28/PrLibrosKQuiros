@@ -78,6 +78,16 @@ class MultiEjemplar {
 	
 	public void borrar(Ejemplar e){
 		
+		String sql;
+		
+		sql = "DELETE *"
+			+ "FROM TbEjemplar"
+			+ "WHERE Codigo = "+e.getId();
+		try{
+			Conector.getConector().ejecutarSQL(sql, true);
+		}catch(Exception f){
+			f.printStackTrace();
+		}
 	}
 	
 }

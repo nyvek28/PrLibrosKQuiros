@@ -205,11 +205,20 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public String consultarLibro(){
+	public TreeMap<Object,Object> consultarLibro(String ptitulo) throws SQLException, Exception{
 
-		/* consultar libro */ 
-		String x = "";
-		return x;
+		Libro libro;
+		TreeMap<Object,Object> datos = new TreeMap<Object,Object>();
+		
+		libro = (new MultiLibro()).buscarTitulo(ptitulo);
+		
+		datos.put("isbn", libro.getIsbn());
+		datos.put("Titulo", libro.getTitulo());
+		datos.put("Volumen", libro.getVolumen());
+		datos.put("Editorial", libro.getEditorial());
+		datos.put("Fecha", libro.getFecha());
+		
+		return datos;
 
 	}
 
@@ -259,9 +268,25 @@ public class Gestor {
 	}
 
 	/*recibe parametros*/
-	public void eliminarEjemplar(){
+	public String eliminarEjemplar(int pid){
 		
-
+		Ejemplar e;
+		String msj;
+		
+		e = (new MultiEjemplar()).buscar(pid);
+		try{
+			if(e != null){
+				(new MultiEjemplar()).borrar(e);
+				msj = "Se ha borrado el usuario";
+			}else{
+				msj = "No se ha encontrado el usuario de id: "+pid;
+			}
+		}catch(Exception e){
+			msj = "Ocurrio un error al intentar borrar al usuario, porfavor intentelo de nuevo";
+		}
+		
+		return msj;
+		
 	}
 
 	/*recibe parametros*/
