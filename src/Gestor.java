@@ -136,12 +136,6 @@ public class Gestor {
 
 	}
 
-	/*recibe paramentros*/
-	public void anularReservacion(){
-
-
-	}
-
 
 	/*recibe paramentros*/
 	public String eliminarUsuario(int id){
