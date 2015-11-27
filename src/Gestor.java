@@ -337,14 +337,15 @@ public class Gestor {
 	/*recibe parametros*/ 
 	// DA: descriptor asociado
 
-	public void registrarDA(){
-		
+	public void registrarDA()throws Exception{
+		DescriptorAsociado descr;
+		descr= (new MultiDescriptorAsociado()).crear();
 
 	}
 
 	/*recibe parametros*/
 	public void modificarDA(){
-
+		
 
 	}
 
