@@ -16,7 +16,7 @@ class MultiPrestamo {
 		return null;
 	}
 	
-	public Vector<Prestamo> buscar(Usuario u){
+	public Vector<Prestamo> buscar(Usuario u) throws ParseException{
 		
 		String sql;
 		Vector prestamos = new Vector();
@@ -33,7 +33,7 @@ class MultiPrestamo {
 		}
 		try {
 			while(rs.next()){
-				Prestamo p = new Prestamo(rs.getDate("FechaPrestamo"),
+				Prestamo p = new Prestamo(this.fechaToDate(rs.getString("FechaPrestamo")),
 											rs.getInt("IdPrestamo"),
 											rs.getInt("CantDias"),
 											rs.getInt("IdUsuario"),
