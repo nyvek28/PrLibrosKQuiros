@@ -57,8 +57,23 @@ class MultiEjemplar {
 		return null;
 	}
 	
-	public void actualizar(Ejemplar e){
+	public void actualizar(Ejemplar e)throws 
+	java.sql.SQLException,Exception{
 		
+		String sql;
+		sql = "UPDATE TbEjemplar "+
+		"SET Codigo='"+e.getId()+"' "+
+		"SET FechaIngreso='"+e.getFechaIngreso()+"' "+
+		"SET Isbn='"+e.getIsbn()+"' "+
+		"SET EstadoFisico='"+e.getEstadoFisico()+"' "+
+		"SET CondicionActual='"+e.getCondicionActual()+"' "+
+		"WHERE Codigo='"+e.getId()+"';";
+		try {
+			Conector.getConector().ejecutarSQL(sql);
+		}
+		catch (Exception f) {
+			throw new Exception ("El cliente no está registrado.");
+		}
 	}
 	
 	public void borrar(Ejemplar e){

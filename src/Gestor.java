@@ -89,15 +89,26 @@ public class Gestor {
 		String msj;
 		msj=(new MultiUsuario()).buscar(idUsuario).reservarEjemplar(pidEjemplar);
 		return msj;
-		
-		
-
 
 	}
 
 	/*recibe paramentros*/
-	public void prestarEjemplar(){
+	public String prestarEjemplar(int id, int codigoEjemplar)throws 
+	java.sql.SQLException,Exception{
 		
+		String msj;
+		Usuario u;
+		msj = "";
+		
+		u = (new MultiUsuario()).buscar(id);
+		if(u != null){
+			u.prestarEjemplar(codigoEjemplar);
+		}else{
+			msj = "No se encontro el usuario que busca";
+		}
+		
+		return msj;
+
 
 	}
 

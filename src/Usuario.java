@@ -92,6 +92,17 @@ public class Usuario {
 	public int getTelefono(){
 		return telefono;
 	}
+	
+	public void prestarEjemplar(int pcodigoEjemplar)throws 
+	java.sql.SQLException,Exception{
+		Ejemplar e;
+		MultiEjemplar multi;
+		
+		multi = new MultiEjemplar();
+		e = multi.buscar(pcodigoEjemplar);
+		e.setCondicionActual(1);
+		multi.actualizar(e);
+	}
 
 	public Vector<Prestamo> getPrestamos() {
 		Vector p;
