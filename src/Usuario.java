@@ -22,7 +22,7 @@ public class Usuario {
 		this.setMultas(new Vector<Multa>());
 	}
 	
-	public String devolverEjemplar(int codigoEjemplar){
+	public String devolverEjemplar(int codigoEjemplar) throws Exception{
 		
 		String msj = "El ejemplar que intenta devolver no se encuentra en los prestamos activos de este cliente";
 		Ejemplar ejemplar = null;

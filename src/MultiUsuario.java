@@ -32,9 +32,7 @@ class MultiUsuario {
 			+ "WHERE Identificacion = "+id;
 		try {
 			rs = Conector.getConector().ejecutarSQL(sql,true);
-			System.out.println("Entro al rs");
 		}catch (Exception e) {
-			System.out.println("No entro al rs");
 			e.printStackTrace();
 		}
 		try {
@@ -45,12 +43,10 @@ class MultiUsuario {
 						rs.getString("Email"), 
 						rs.getString("Direccion"), 
 						rs.getInt("Telefono"));
-				System.out.println("Entro al if");
 			} else {
 				user = null;
 			}
 		} catch (SQLException e) {
-			System.out.println("no entro al if");
 			e.printStackTrace();
 		}
 		try {
