@@ -1,5 +1,6 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.TreeMap;
@@ -353,5 +354,16 @@ public class Gestor {
 
 		String x = "";
 		return x;
+	}
+	
+	public String formatearFecha(Date pFecha){
+		
+		String fecha;
+		SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
+		
+		fecha = formato.format(pFecha);
+		
+		return fecha;
+		
 	}
 }
