@@ -132,6 +132,8 @@ public class Gestor {
 	/*recibe paramentros*/
 	public void cancelarMulta(){
 		
+	}
+		
 
 	}
 
@@ -292,23 +294,23 @@ public class Gestor {
 		}
 
 	/*recibe parametros*/
-	public String consultarTransaccion(int pid){
+	public TreeMap consultarTransaccion(int pid, int idUser){
 		Transaccion trans;
 		TreeMap<Object,Object> datos = new TreeMap<Object,Object>();
 		
 		trans = (new MultiTransaccion()).buscar(pid);
 		
-		datos.put("identificacion", ejem.getId());
-		datos.put("Estado Fisico", ejem.getEstadoFisico());
-		datos.put("CondicionActual", ejem.getCondicionActual());
-		datos.put("titulo", (ejem.getLibro()).getTitulo());
+		datos.put("identificacion", trans.getId());
+		datos.put("fecha", trans.getFecha());
+		datos.put("Tipo", trans.getTipo());
+		datos.put("Usuario", (new MultiUsuario()).buscar(idUser).getId());
+		datos.put("titulo", trans.getDescripcion());
 		
 		
 		
 		return datos;
 		// consultar transaccion
-		String x = "";
-		return x;
+		
 		
 	}
 
