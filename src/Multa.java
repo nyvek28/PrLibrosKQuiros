@@ -8,7 +8,7 @@ class Multa {
 	private Date fecha;
 	private int idUsuario;
 	private Usuario user;
-	private int estado;
+	private int estado;//1 es pendiente, 0 es cancelada
 	private double montoTotal;
 	
 	public Multa(Usuario u){

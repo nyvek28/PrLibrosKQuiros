@@ -141,20 +141,25 @@ public class Gestor {
 				msj+="\n"+multa.getMontoTotal();
 			}else{
 				msj="No hay Multas";
-			}
-			return msj;
-			
+			}	
 		}
+		return msj;
 		
 	}
 	/*recibe paramentros*/
-	public void cancelarMulta(int idUsuario,Date fechaDevolucion, int pmulta){
+	public void cancelarMulta(int idUsuario, int pmulta){
 		Usuario user;
-		user=(new MultiUsuario()).buscar(idUsuario);
-		(user.getMultas()).get(pmulta);
 		Multa multa;
-		multa.calcularMulta(fechaDevolucion);
-	}
+		double monto=0;
+		user=(new MultiUsuario()).buscar(idUsuario);
+		for(int i=0;i<=user.getMultas().size();i++){
+			if((user.getMultas()).get(i).getEstado()==1){
+				((user.getMultas()).get(i)).cancelar();;
+				
+			}
+		}
+		
+	
 		
 		
 

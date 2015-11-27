@@ -57,7 +57,9 @@ public class Usuario {
 		return x;
 		
 	}
-	public void cancelarMulta(){
+	public void cancelarMulta(double monto){
+		
+		}
 		
 		
 		
