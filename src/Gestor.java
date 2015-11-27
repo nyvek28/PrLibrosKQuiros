@@ -322,6 +322,32 @@ public class Gestor {
 		return datos;
 		
 	}
+	
+	public ArrayList consultarAutorNombre(String nombre){
+
+		ArrayList variosAutores = new ArrayList();
+		ArrayList<Autor> autores;
+		
+		autores = (new MultiAutor()).buscar(nombre);
+		if(autores.size() > 0){
+			for(int i = 0; i < autores.size(); i++){
+				
+				TreeMap datos = new TreeMap();
+				datos.put("id", autores.get(i).getId());
+				datos.put("nombre", autores.get(i).getNombre());
+				datos.put("apellido", autores.get(i).getApellido());
+				datos.put("email", autores.get(i).getEmail());
+				datos.put("paisOrigen", autores.get(i).getPaisOrigen());
+				datos.put("nacionalidad", autores.get(i).getNacionalidad());
+				variosAutores.add(datos);
+			}
+		}else{
+			variosAutores = null;
+		}
+		
+		return variosAutores;
+		
+	}
 
 	/*recibe parametros*/
 	public void registrarAutor(){
