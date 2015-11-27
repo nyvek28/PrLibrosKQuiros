@@ -3,7 +3,11 @@
 /*import java.sql.*;
 import java.util.Vector;
 import java.util.Date;*/
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MultiLibro {
 	
@@ -123,5 +127,25 @@ public class MultiLibro {
 		catch (Exception e) {
 			throw new Exception ("");
 		}
+	}
+	
+	public String fechaToString(Date fecha){
+		
+		String msj;
+		
+		msj = fecha.toString();
+		
+		return msj;
+		
+	}
+	
+	public Date fechaToDate(String texto) throws ParseException{		
+		Date fecha;
+		
+		DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa");
+		fecha = formatter.parse(texto);
+		
+		return fecha;
+		
 	}
 }

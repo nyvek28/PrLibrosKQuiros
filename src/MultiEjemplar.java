@@ -1,5 +1,9 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class MultiEjemplar {
 
@@ -27,7 +31,7 @@ class MultiEjemplar {
 		try {
 			if (rs.next()) {
 				try {
-					ejem = new Ejemplar (rs.getDate("FechaIngreso"), 
+					ejem = new Ejemplar (this.fechaToDate(rs.getString("FechaIngreso")), 
 							rs.getInt("Codigo"), 
 							rs.getInt("EstadoFisico"), 
 							rs.getInt("CondicionActual"), 
@@ -63,7 +67,7 @@ class MultiEjemplar {
 		String sql;
 		sql = "UPDATE TbEjemplar "+
 		"SET Codigo='"+e.getId()+"' "+
-		"SET FechaIngreso='"+e.getFechaIngreso()+"' "+
+		"SET FechaIngreso='"+this.fechaToString(e.getFechaIngreso())+"' "+
 		"SET Isbn='"+e.getIsbn()+"' "+
 		"SET EstadoFisico='"+e.getEstadoFisico()+"' "+
 		"SET CondicionActual='"+e.getCondicionActual()+"' "+
@@ -88,6 +92,26 @@ class MultiEjemplar {
 		}catch(Exception f){
 			f.printStackTrace();
 		}
+	}
+	
+	public String fechaToString(Date fecha){
+		
+		String msj;
+		
+		msj = fecha.toString();
+		
+		return msj;
+		
+	}
+	
+	public Date fechaToDate(String texto) throws ParseException{		
+		Date fecha;
+		
+		DateFormat formatter = new SimpleDateFormat("d-MMM-yyyy,HH:mm:ss aaa");
+		fecha = formatter.parse(texto);
+		
+		return fecha;
+		
 	}
 	
 }
