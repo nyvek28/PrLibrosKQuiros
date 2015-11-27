@@ -129,8 +129,32 @@ public class Gestor {
 
 	}
 
+	public String consultarMultas(int idUser){
+		Usuario user;
+		user=(new MultiUsuario()).buscar(idUser);
+		Multa multa;
+		String msj=" ";
+		
+		for(int i=0;i<=user.getMultas().size();i++){
+			if((user.getMultas()).get(i).getEstado()==1){
+				multa=(user.getMultas()).get(i);
+				msj+="\n"+multa.getMontoTotal();
+			}else{
+				msj="No hay Multas";
+			}
+			return msj;
+			
+		}
+		
+	}
 	/*recibe paramentros*/
-	public void cancelarMulta(){
+	public void cancelarMulta(int idUsuario,Date fechaDevolucion, int pmulta){
+		Usuario user;
+		user=(new MultiUsuario()).buscar(idUsuario);
+		(user.getMultas()).get(pmulta);
+		Multa multa;
+		multa.calcularMulta(fechaDevolucion);
+	}
 		
 		
 

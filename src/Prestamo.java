@@ -70,6 +70,9 @@ class Prestamo {
 		
 		m = (new MultiMulta()).crear(this.getUser());
 		costo = m.calcularMulta(this.calcularFechaDevolucion());
+		Usuario user;
+		user=this.getUser();
+		user.setMultas(m);
 		
 		return costo;
 		

@@ -127,8 +127,8 @@ public class Usuario {
 		return multas;
 	}
 
-	public void setMultas(Vector<Multa> multas) {
-		this.multas = multas;
+	public void setMultas(Multa multas) {
+		this.multas.add(multas);
 	}
 
 			

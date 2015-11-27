@@ -23,7 +23,7 @@ class Ejemplar {
 		this.setCondicionActual(condicionActual);
 	}
 	
-	public Ejemplar(Libro libro, int estadoFisico){
+	public Ejemplar(Libro libro, int estadoFisico)throws Exception{
 		
 		this.setLibro(libro);
 		this.setIsbn(this.getLibro().getIsbn());

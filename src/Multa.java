@@ -9,6 +9,7 @@ class Multa {
 	private int idUsuario;
 	private Usuario user;
 	private int estado;
+	private double montoTotal;
 	
 	public Multa(Usuario u){
 		
@@ -20,12 +21,20 @@ class Multa {
 		setEstado(1);
 		
 	}
+	public double getMontoTotal(){
+		return montoTotal;
+	}
+	private void setMontoTotal(double pMontoTotal){
+		montoTotal=pMontoTotal;
+	}
 	
 	private double calcularCosto(long diasPasados){
 		
 		double monto;
 		
 		monto = Multa.getCostoPorDia()*diasPasados;
+		setMontoTotal(monto);
+		
 		
 		return monto;
 		
