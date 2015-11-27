@@ -105,7 +105,15 @@ public class Gestor {
 	public String devolverEjemplar(int id, int codigoEjemplar){
 
 		String msj;
-		msj = (new MultiUsuario()).buscar(id).devolverEjemplar(codigoEjemplar);
+		Usuario u;
+		
+		u = (new MultiUsuario()).buscar(id);
+		if(u != null){
+			msj = u.devolverEjemplar(codigoEjemplar);
+		}else{
+			msj = "No se encontro el usuario que busca";
+		}
+		
 		return msj;
 
 	}
